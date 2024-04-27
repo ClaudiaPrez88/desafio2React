@@ -1,16 +1,14 @@
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faLinkedin, faGithub} from "@fortawesome/free-brands-svg-icons"
 import Button from 'react-bootstrap/Button';
 
 import React from 'react'
 
-export const SocialButton = () => {
+export const SocialButton = ({icon1,icon2,icon3}) => {
   return (
-    <div className='boton-social'>
-        <Button variant="outline-dark"><FontAwesomeIcon icon={faFacebook} /></Button>
-        <Button variant="outline-dark"><FontAwesomeIcon icon={faGithub} /></Button>
-        <Button variant="outline-dark"><FontAwesomeIcon icon={faLinkedin} /></Button>
+    <div className='botones-social'>
+        <Button variant="outline-dark"><i className={icon1}></i></Button>
+        <Button variant="outline-dark"><i className={icon2}></i></Button>
+        <Button variant="outline-dark"><i className={icon3}></i></Button>
     </div>
   )
 }

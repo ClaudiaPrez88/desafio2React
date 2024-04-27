@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import PropTypes from 'prop-types';
 
 export const Formulario = ({ onChange, handleErrors }) => {
 	const onSubmit = (event) => {
 		event.preventDefault();
-
+		console.log(event.target)
 		const emailRegex = /^[A-Za-z0-9._%+-]+@[a-z._-]+\.[A-Za-z]{2,}$/;
-		const { nombre, apellido, correo, password, passwordRepeat } = event.target;
+		const { nombre, correo, password, passwordRepeat } = event.target;
 
 		if (
 			!nombre.value ||
-			!apellido.value ||
 			!correo.value ||
 			!password.value ||
 			!passwordRepeat.value
@@ -26,7 +26,7 @@ export const Formulario = ({ onChange, handleErrors }) => {
 		}
 
 		if (password.value != passwordRepeat.value) {
-			handleErrors('Las contraseñas no son iguales');
+			handleErrors('Las contraseñas no coinciden');
 			return;
 		}
 
@@ -37,73 +37,57 @@ export const Formulario = ({ onChange, handleErrors }) => {
 		<Form onSubmit={onSubmit}>
 			<Form.Group
 				className="mb-3"
-				controlId="formBasicEmail"
+				controlId="nombre"
 			>
-				<Form.Label>Nombre</Form.Label>
 				<Form.Control
 					name="nombre"
 					type="text"
-					placeholder="Ingresa el nombre"
-					onChange={onChange}
-				/>
-			</Form.Group>
-			<Form.Group
-				className="mb-3"
-				controlId="formBasicEmail"
-			>
-				<Form.Label>Apellido</Form.Label>
-				<Form.Control
-					name="apellido"
-					type="text"
-					placeholder="Ingresa Apellido"
+					placeholder="Nombre"
 					onChange={onChange}
 				/>
 			</Form.Group>
 
 			<Form.Group
 				className="mb-3"
-				controlId="formBasicEmail"
+				controlId="correo"
 			>
-				<Form.Label>Correo</Form.Label>
 				<Form.Control
 					name="correo"
 					type="email"
-					placeholder="Escribe el correo"
+					placeholder="Correo"
 					onChange={onChange}
 				/>
 			</Form.Group>
 
 			<Form.Group
 				className="mb-3"
-				controlId="formBasicPassword"
+				controlId="password"
 			>
-				<Form.Label>Password</Form.Label>
 				<Form.Control
 					name="password"
 					type="password"
-					placeholder="Password"
+					placeholder="Contraseña"
 					onChange={onChange}
 				/>
 			</Form.Group>
 
 			<Form.Group
 				className="mb-3"
-				controlId="formBasicPassword"
+				controlId="password2"
 			>
-				<Form.Label>Password Repeat</Form.Label>
 				<Form.Control
 					name="passwordRepeat"
 					type="password"
-					placeholder="Password"
+					placeholder="Verifica contraseña"
 					onChange={onChange}
 				/>
 			</Form.Group>
 
 			<Button
-				variant="primary"
+				variant="success"
 				type="submit"
 			>
-				Submit
+				Registrarse
 			</Button>
 		</Form>
 	);
