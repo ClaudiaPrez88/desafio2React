@@ -6,6 +6,7 @@ export const Formulario = ({ onChange, handleErrors }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(event.target);
+    const nombreRegex = /^.{3,}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/; // 8-15 caracteres, una mayúscula, una minúscula, un número y un carácter especial
@@ -18,6 +19,10 @@ export const Formulario = ({ onChange, handleErrors }) => {
       !passwordRepeat.value
     ) {
       handleErrors("Todos los campos obligatorios");
+      return;
+    }
+    if (!nombreRegex.test(nombre.value)) {
+      handleErrors("El nombre debe tener al menos 3 caracteres");
       return;
     }
 
